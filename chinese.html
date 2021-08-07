@@ -31,6 +31,11 @@ color: #000;
     font-weight: 600;
 }
 
+.btn{
+display:block;
+margin-right:2vw;
+}
+    
 .container{
  display: flex;
   align-items: center;
@@ -106,8 +111,8 @@ font-family: 'Dancing Script', cursive;
   <div class="wordblock"><p id="ZH"></p></div>
         <div class="stblock"><p id="pinyin"></p></div>
         <div class="stblock"><p id="translation"></p></div>
-        <div class="buttonsblock"><button class="buttons" onclick="startNext()"><a class="btn border-smaller" id="random-quote" href="#" title="Next Quote"><span class="btntext">Next</span></a></button>
-<button class="buttons" onclick="checkPinyin()">Pinyin</button><button class="buttons" onclick="checkTranslation()">Translation</button></div>
+        <div class="buttonsblock"><div class="btn"><a class="border-smaller" id="random-quote" href="#" title="Next Quote"><button class="buttons" onclick="startNext()"><span class="btntext">Next</span></button></a></div>
+            <div class="btn"><button class="buttons" onclick="checkPinyin()">Pinyin</button></div><button class="buttons" onclick="checkTranslation()">Translation</button></div>
 </div>
       </div>
 
