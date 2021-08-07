@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<script>
+  const quotesPool = [
+
+["salva l'uomo che bussa alla mia porta", "искать1"],
+["cercare2", "искать2"],
+["cercare3", "искать3"],
+["cercare4", "искать4"],
+["cercare5", "искать5"],
+["cercare6", "искать6"],
+["cercare7", "искать7"],
+["cercare8", "искать8"],
+["cercare9", "искать9"],
+["cercare10", "искать10"]
+
+];
+</script>
+<style>
+body{
+font-family: sans-serif;
+}
+
+p{
+margin: 0 !important;  
+}
+
+a{
+    text-decoration: none;
+color: black;
+    font-weight: 600;
+}
+
+.btn{
+display:block;
+margin-right:2vw;
+}
+
+.container{
+ display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box{
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+flex-flow: column;
+}
+#source{
+font-size: 5vw;
+color:#0C1446;
+}
+#translation{
+font-size:2vw;
+display:none;
+color:#008080;
+}
+.stblock{
+  display: flex;
+    width: 100%;
+    height:7vh;
+    justify-content: center;
+    align-items:center;
+    margin: 1vh;
+}
+
+.buttonsblock{
+  display: flex;
+    width: 100%;
+    height:7vh;
+    justify-content: center;
+    align-items:center;
+    margin: 1vh;
+    margin-top:5vh;
+}
+
+.wordblock{
+  display: flex;
+    width: 100%;
+    height:40vh;
+    justify-content: center;
+}
+.buttons{
+    background: #fff;
+    border: none;
+    padding: 1vw;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid grey;
+cursor:pointer;
+}
+</style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+<div class="box">
+  <div class="wordblock"><p id="source"></p></div>
+        <div class="stblock"><p id="translation"></p></div>
+        <div class="buttonsblock"><div class="btn"><a class="border-smaller" id="random-quote" href="#"><button class="buttons" onclick="startNext()"><span class="btntext">Next</span></button></a></div>
+<button class="buttons" onclick="checkTranslation()">Translation</button></div>
+</div>
+      </div>
+
+    </main>
+  </div>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+
+  let oldQuoteIndex;
+
+
+  function generateNumber(dataPool) {
+    return Math.floor(Math.random() * dataPool.length);
+  }
+
+
+  function generateNewQuote() {
+    let index = generateNumber(quotesPool);
+
+    while (index === oldQuoteIndex) {
+      index = generateNumber(quotesPool);
+    }
+    let newQuote = quotesPool[index];
+    let ZH = document.getElementById("source");
+let translation = document.getElementById("translation");
+
+    ZH.innerHTML = newQuote[0];
+translation.innerHTML = newQuote[1];
+
+    oldQuoteIndex = index;
+  }
+
+
+  function onQuoteButtonClick() {
+    let randomQuoteButton = document.querySelector("#random-quote");
+    randomQuoteButton.addEventListener("click", function(){
+      generateNewQuote();
+    });
+  }
+
+  onQuoteButtonClick();
+
+
+  window.onload = function () {
+    generateNewQuote();
+  };
+  
+});
+
+function checkTranslation() {
+  var x = document.getElementById("translation");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function startNext() {
+  var x = document.getElementById("translation");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+</html>
