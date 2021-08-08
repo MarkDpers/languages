@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<script>
+    const quotesPool = [
+
+["打電話1", "Dǎ diànhuà", "To call1"],
+["打電話2", "Dǎ diànhuà", "To call2"],
+["打電話3", "Dǎ diànhuà", "To call3"],
+["打電話4", "Dǎ diànhuà", "To call4"],
+["打電話5", "Dǎ diànhuà", "To call5"],
+["打電話6", "Dǎ diànhuà", "To call6"],
+["打電話7", "Dǎ diànhuà", "To call7"],
+["打電話8", "Dǎ diànhuà", "To call8"],
+["打電話9", "Dǎ diànhuà", "To call9"],
+["打電話10", "Dǎ diànhuà", "To call10"]
+
+];
+  </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Athiti:wght@200&display=swap" rel="stylesheet">
+<style>
+p{
+margin: 0 !important;  
+}
+    
+a{
+    text-decoration: none !important;
+color: #000;
+    font-weight: 600;
+}
+
+.btn{
+display:block;
+margin-right:2vw;
+}
+    
+.container{
+ display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box{
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+flex-flow: column;
+}
+#ZH{
+font-size: 15vw;
+color:#0C1446;
+font-family: 'Noto Serif SC', serif;
+}
+#pinyin{
+font-size: 3vw;
+display:none;
+color:#008080;
+font-family: 'Athiti', sans-serif;
+}
+#translation{
+font-size:2vw;
+display:none;
+color:#008080;
+font-family: sans-serif;
+}
+.stblock{
+  display: flex;
+    width: 100%;
+    height:7vh;
+    justify-content: center;
+    align-items:center;
+    margin: 1vh;
+}
+
+.buttonsblock{
+  display: flex;
+    width: 100%;
+    height:7vh;
+    justify-content: center;
+    align-items:center;
+    margin: 1vh;
+    margin-top:5vh;
+}
+
+.wordblock{
+  display: flex;
+    width: 100%;
+    height:40vh;
+    justify-content: center;
+}
+.buttons{
+    background: #fff;
+    border: none;
+    padding: 1vw;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid grey;
+    cursor:pointer;
+}
+    
+    @media (max-width: 500px) {
+  #pinyin {
+    font-size: 5vw;
+    font-weight:600;
+  }
+   .btn{
+    margin-right:7vw;   
+  }
+}
+</style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+<div class="box">
+  <div class="wordblock"><p id="ZH"></p></div>
+        <div class="stblock"><p id="pinyin"></p></div>
+        <div class="stblock"><p id="translation"></p></div>
+        <div class="buttonsblock"><div class="btn"><a class="border-smaller" id="random-quote" href="#" title="Next Quote"><button class="buttons" onclick="startNext()"><span class="btntext">Next</span></button></a></div>
+            <div class="btn"><button class="buttons" onclick="checkPinyin()">Pinyin</button></div><button class="buttons" onclick="checkTranslation()">Translation</button></div>
+</div>
+      </div>
+
+    </main>
+  </div>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+
+  let oldQuoteIndex;
+
+
+  function generateNumber(dataPool) {
+    return Math.floor(Math.random() * dataPool.length);
+  }
+
+
+  function generateNewQuote() {
+    let index = generateNumber(quotesPool);
+
+    while (index === oldQuoteIndex) {
+      index = generateNumber(quotesPool);
+    }
+    let newQuote = quotesPool[index];
+    let ZH = document.getElementById("ZH");
+    let pinyin = document.getElementById("pinyin");
+let translation = document.getElementById("translation");
+
+    ZH.innerHTML = newQuote[0];
+    pinyin.innerHTML = newQuote[1];
+translation.innerHTML = newQuote[2];
+
+    oldQuoteIndex = index;
+  }
+
+
+  function onQuoteButtonClick() {
+    let randomQuoteButton = document.querySelector("#random-quote");
+    randomQuoteButton.addEventListener("click", function(){
+      generateNewQuote();
+    });
+  }
+
+  onQuoteButtonClick();
+
+
+  window.onload = function () {
+    generateNewQuote();
+  };
+  
+});
+
+function checkPinyin() {
+  var x = document.getElementById("pinyin");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function checkTranslation() {
+  var x = document.getElementById("translation");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function startNext() {
+  var x = document.getElementById("translation");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "none";
+  }
+  var x = document.getElementById("pinyin");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+</html>
