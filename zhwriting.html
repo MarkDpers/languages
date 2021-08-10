@@ -83,13 +83,13 @@ margin-right:2vw;
 flex-flow: column;
 }
 #ZH{
-font-size: 15vw;
+font-size: 5vw;
 color:#0C1446;
 font-family: 'Noto Serif SC', serif;
+display:none;
 }
 #pinyin{
-font-size: 3vw;
-display:none;
+font-size: 13vw;
 color:#008080;
 font-family: 'Athiti', sans-serif;
 }
@@ -136,7 +136,7 @@ font-family: sans-serif;
     
     @media (max-width: 500px) {
   #pinyin {
-    font-size: 5vw;
+    font-size: 15vw;
     font-weight:600;
   }
    .btn{
@@ -151,16 +151,16 @@ font-family: sans-serif;
 <body>
   <div class="container">
 <div class="box">
-  <div class="wordblock"><p id="ZH"></p></div>
+  <div class="wordblock"><p id="pinyin"></p></div>
     <input id="numb">
 
 <button type="button" onclick="myFunction()">Submit</button>
 
 <p id="demo"></p>
-        <div class="stblock"><p id="pinyin"></p></div>
+        <div class="stblock"><p id="ZH"></p></div>
         <div class="stblock"><p id="translation"></p></div>
         <div class="buttonsblock"><div class="btn"><a class="border-smaller" id="random-quote" href="#" title="Next Quote"><button class="buttons" onclick="startNext()"><span class="btntext">Next</span></button></a></div>
-            <div class="btn"><button class="buttons" onclick="checkPinyin()">Pinyin</button></div><button class="buttons" onclick="checkTranslation()">Translation</button></div>
+            <div class="btn"><button class="buttons" onclick="checkZH()">中文</button></div><button class="buttons" onclick="checkTranslation()">Translation</button></div>
 </div>
       </div>
 
@@ -173,12 +173,14 @@ function myFunction() {
   let text;
   if (document.getElementById("numb").value == document.getElementById("ZH").innerHTML) 
   {
-    text = "Input OK";
-  } else {
+    text = "Input OK"
+  }
+  else {
     text = "Input not valid";
   }
   document.getElementById("demo").innerHTML = text;
 }
+
 </script>
 <script>
 document.addEventListener("DOMContentLoaded",function(){
@@ -202,7 +204,7 @@ document.addEventListener("DOMContentLoaded",function(){
     let ZH = document.getElementById("ZH");
 let translation = document.getElementById("translation");
 
-    pinyin..innerHTML = newQuote[0];
+    pinyin.innerHTML = newQuote[0];
     ZH.innerHTML = newQuote[1];
 translation.innerHTML = newQuote[2];
 
