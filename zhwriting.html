@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <script>
@@ -5,7 +6,7 @@
 
 ["rén", "人", "a person"],
 ["lái", "来", "to come"],
-["zài", "在", "on, in"],
+["zài", "在", "in, on"],
 ["shénme", "什么", "what"],
 ["shì", "是", "---"],
 ["dì", "第", "---"],
@@ -159,7 +160,7 @@ font-family: sans-serif;
 <p id="demo"></p>
         <div class="stblock"><p id="ZH"></p></div>
         <div class="stblock"><p id="translation"></p></div>
-        <div class="buttonsblock"><div class="btn"><a class="border-smaller" id="random-quote" href="#" title="Next Quote"><button class="buttons" onclick="startNext()"><span class="btntext">Next</span></button></a></div>
+        <div class="buttonsblock"><div class="btn" onclick="document.getElementById('numb').value = ''"><a class="border-smaller" id="random-quote" href="#" title="Next Quote"><button class="buttons" onclick="startNext()"><span class="btntext">Next</span></button></a></div>
             <div class="btn"><button class="buttons" onclick="checkZH()">中文</button></div><button class="buttons" onclick="checkTranslation()">Translation</button></div>
 </div>
       </div>
@@ -173,14 +174,12 @@ function myFunction() {
   let text;
   if (document.getElementById("numb").value == document.getElementById("ZH").innerHTML) 
   {
-    text = "Input OK"
-  }
-  else {
+    text = "Input OK";
+  } else {
     text = "Input not valid";
   }
   document.getElementById("demo").innerHTML = text;
 }
-
 </script>
 <script>
 document.addEventListener("DOMContentLoaded",function(){
@@ -259,6 +258,13 @@ function startNext() {
   } else {
     x.style.display = "none";
   }
+    var x = document.getElementById("demo");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "none";
+  }
 }
 </script>
 </html>
+
