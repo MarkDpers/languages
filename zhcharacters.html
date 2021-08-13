@@ -1,51 +1,50 @@
-
 <!DOCTYPE html>
 <html>
 <script>
     const quotesPool = [
 
-["rén", "人", "a person"],
-["lái", "来", "to come"],
-["zài", "在", "in, on"],
-["shénme", "什么", "what"],
-["shì", "是", "---"],
-["dì", "第", "---"],
-["shí", "十", "10"],
-["běn", "本", "---"],
-["yǒu", "有", "to have"],
-["yè", "业", "an industry"],
-["mù", "木", "a tree"],
-["de", "的", "---"],
-["gè", "个", "---"],
-["dà", "大", "big"],
-["bǎi", "白", "100"],
-["tài", "太", "very, too"],
-["jíle", "极了", "too (positve context)"],
-["sǐle", "死了", "too (negatve context)"],
-["yuè", "月", "the month"],
-["rì", "日", "the day"],
-["lì", "力", "---"],
-["shāng", "上", "---"],
-["mǎ", "马", "a horse"],
-["mā", "妈", "---"],
-["zì", "自", "---"],
-["lán", "兰", "---"],
-["wū", "乌", "---"],
-["ěr", "尔", "---"],
-["bā", "巴", "---"],
-["fū", "夫", "---"],
-["kǎ", "卡", "---"],
-["kè", "克", "---"],
-["sī", "斯", "---"],
-["duō", "多", "many, much"],
-["suì", "岁", "years old"],
-["māo", "猫", "a cat"],
-["jīn", "今", "---"],
-["nián", "年", "---"],
-["zhōng", "中", "---"],
-["wén", "文", "---"],
-["qī", "七", "7"],
-["bā", "八", "8"]
+["人", "rén", "a person"],
+["来", "lái", "to come"],
+["在", "zài", "in, on"],
+["什么", "shénme", "what"],
+["是", "shì", "---"],
+["第", "dì", "---"],
+["十", "shí", "10"],
+["本", "běn", "---"],
+["有", "yǒu", "to have"],
+["业", "yè", "an industry"],
+["木", "mù", "a tree"],
+["的", "de", "---"],
+["个", "gè", "---"],
+["大", "dà", "big"],
+["白", "bǎi", "100"],
+["太", "tài", "very, too"],
+["极了", "jíle", "too (positve context)"],
+["死了", "sǐle", "too (negatve context)"],
+["月", "yuè", "the month"],
+["日", "rì", "the day"],
+["力", "lì", "---"],
+["上", "shāng", "---"],
+["马", "mǎ", "a horse"],
+["妈", "mā", "---"],
+["自", "zì", "---"],
+["兰", "lán", "---"],
+["乌", "wū", "---"],
+["尔", "ěr", "---"],
+["巴", "bā", "---"],
+["夫", "fū", "---"],
+["卡", "kǎ", "---"],
+["克", "kè", "---"],
+["斯", "sī", "---"],
+["多", "duō", "many, much"],
+["岁", "suì", "years old"],
+["猫", "māo", "a cat"],
+["今", "jīn", "---"],
+["年", "nián", "---"],
+["中", "zhōng", "---"],
+["文", "wén", "---"],
+["七", "qī", "7"],
+["八", "bā", "8"]
 
 ];
   </script>
@@ -84,13 +83,13 @@ margin-right:2vw;
 flex-flow: column;
 }
 #ZH{
-font-size: 5vw;
+font-size: 15vw;
 color:#0C1446;
 font-family: 'Noto Serif SC', serif;
-display:none;
 }
 #pinyin{
-font-size: 13vw;
+font-size: 3vw;
+display:none;
 color:#008080;
 font-family: 'Athiti', sans-serif;
 }
@@ -137,7 +136,7 @@ font-family: sans-serif;
     
     @media (max-width: 500px) {
   #pinyin {
-    font-size: 15vw;
+    font-size: 5vw;
     font-weight:600;
   }
    .btn{
@@ -152,35 +151,17 @@ font-family: sans-serif;
 <body>
   <div class="container">
 <div class="box">
-  <div class="wordblock"><p id="pinyin"></p></div>
-    <input id="numb">
-
-<button type="button" onclick="myFunction()">Submit</button>
-
-<p id="demo"></p>
-        <div class="stblock"><p id="ZH"></p></div>
+  <div class="wordblock"><p id="ZH"></p></div>
+        <div class="stblock"><p id="pinyin"></p></div>
         <div class="stblock"><p id="translation"></p></div>
-        <div class="buttonsblock"><div class="btn" onclick="document.getElementById('numb').value = ''"><a class="border-smaller" id="random-quote" href="#" title="Next Quote"><button class="buttons" onclick="startNext()"><span class="btntext">Next</span></button></a></div>
-            <div class="btn"><button class="buttons" onclick="checkZH()">中文</button></div><button class="buttons" onclick="checkTranslation()">Translation</button></div>
+        <div class="buttonsblock"><div class="btn"><a class="border-smaller" id="random-quote" href="#" title="Next Quote"><button class="buttons" onclick="startNext()"><span class="btntext">Next</span></button></a></div>
+            <div class="btn"><button class="buttons" onclick="checkPinyin()">Pinyin</button></div><button class="buttons" onclick="checkTranslation()">Translation</button></div>
 </div>
       </div>
 
     </main>
   </div>
 </body>
-<script>
-function myFunction() {
-  let xax = document.getElementById("numb").value;
-  let text;
-  if (document.getElementById("numb").value == document.getElementById("ZH").innerHTML) 
-  {
-    text = "Input OK";
-  } else {
-    text = "Input not valid";
-  }
-  document.getElementById("demo").innerHTML = text;
-}
-</script>
 <script>
 document.addEventListener("DOMContentLoaded",function(){
 
@@ -199,12 +180,12 @@ document.addEventListener("DOMContentLoaded",function(){
       index = generateNumber(quotesPool);
     }
     let newQuote = quotesPool[index];
-    let pinyin = document.getElementById("pinyin");
     let ZH = document.getElementById("ZH");
+    let pinyin = document.getElementById("pinyin");
 let translation = document.getElementById("translation");
 
-    pinyin.innerHTML = newQuote[0];
-    ZH.innerHTML = newQuote[1];
+    ZH.innerHTML = newQuote[0];
+    pinyin.innerHTML = newQuote[1];
 translation.innerHTML = newQuote[2];
 
     oldQuoteIndex = index;
@@ -227,8 +208,8 @@ translation.innerHTML = newQuote[2];
   
 });
 
-function checkZH() {
-  var x = document.getElementById("ZH");
+function checkPinyin() {
+  var x = document.getElementById("pinyin");
   if (x.style.display === "block") {
     x.style.display = "none";
   } else {
@@ -252,13 +233,7 @@ function startNext() {
   } else {
     x.style.display = "none";
   }
-  var x = document.getElementById("ZH");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "none";
-  }
-    var x = document.getElementById("demo");
+  var x = document.getElementById("pinyin");
   if (x.style.display === "block") {
     x.style.display = "none";
   } else {
@@ -267,4 +242,3 @@ function startNext() {
 }
 </script>
 </html>
-
