@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p>The match() method searches a string for a match against a regular expression.</p>
+
+    <input id="numb">
+
+<button type="button" onclick="myFunction()">Submit</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+let str = document.getElementById("numb").value;
+document.getElementById("demo").innerHTML = str.match(/to\s\w*\W\s*(in|out|off|on)/ig);
+}
+</script>
+
+</body>
+</html>
